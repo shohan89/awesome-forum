@@ -4,10 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome Forum</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <h1>Welcome to Awesome Forum!</h1>
+    <!-- Nav Start -->
+    <nav class="container mx-auto">
+      <div class="navbar bg-base-100">
+        <div class="flex-1">
+          <a class="btn btn-ghost normal-case text-xl">Awesome Forum</a>
+        </div>
+        <div class="flex-none">
+          <ul class="menu menu-horizontal p-0 gap-2 text-lg">
+            <li
+              class="bordered border-2 border-base-content rounded-full"
+              title="Home"
+            >
+              <a href="#" title="Home"><i class="fa-solid fa-house"></i></a>
+            </li>
+            <li
+              class="bordered border-2 border-base-content rounded-full"
+              title="Settings"
+            >
+              <a href="#"><i class="fa-solid fa-pencil"></i></a>
+            </li>
+            <li
+              class="bordered border-2 border-base-content rounded-full"
+              title="Add User"
+            >
+              <a href="#"><i class="fa-solid fa-user-plus"></i></a>
+            </li>
+            <li
+              class="bordered border-2 border-base-content rounded-full"
+              title="Flag"
+            >
+              <a href="#"><i class="fa-solid fa-flag"></i></a>
+            </li>
+            <li>
+              <button class="btn btn-accent rounded-full">Sign In</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Nav end -->
+    <main></main>
+    <footer></footer>
 
     <script src="./scripts/index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9a8a4b088b.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
