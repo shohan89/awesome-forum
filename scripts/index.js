@@ -51,6 +51,7 @@ const loadAllNews = async () => {
                       <span class="text-[#12132D9F] mr-4">${news.posted_time}</span>
                     </div>
                     <button
+                      onclick="addTitleToSidebar('${news.title}')"
                       class="btn cursor-pointer bg-[#10B981] text-white rounded-full w-[28px] h-[28px]"
                     >
                       <i class="fa-solid fa-envelope-open-text"></i>
@@ -64,6 +65,21 @@ const loadAllNews = async () => {
         console.error('Error fetching news:', error);
     }
 }
+
+//? add event handler to the button and after clicking the button the title will add on the sidebar
+const addTitleToSidebar = (title) => {
+    const sideBarContainer = document.getElementById('side-bar-container');
+    const titleElement = document.createElement('div');
+    titleElement.classList = 'content-header flex justify-between mb-4';
+    titleElement.innerHTML = `
+        <h5 class="text-xl font-bold">${title}</h5>
+                <p>Mark as read (4)</p>
+    `;
+    sideBarContainer.appendChild(titleElement);
+}
+
+
+
 //? Call the function to load news when the page loads
 window.onload = () => {
     loadAllNews();
