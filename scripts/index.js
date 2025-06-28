@@ -67,8 +67,8 @@ const loadAllNews = async () => {
 }
 
 //? add event handler to the button and after clicking the button the title will add on the sidebar
+const sideBarContainer = document.getElementById('side-bar-container');
 const addTitleToSidebar = (title) => {
-    const sideBarContainer = document.getElementById('side-bar-container');
     const titleElement = document.createElement('div');
     titleElement.classList = 'content-header flex justify-between mb-4';
     titleElement.innerHTML = `
