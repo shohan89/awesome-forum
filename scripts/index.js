@@ -7,11 +7,9 @@ const loadAllNews = async () => {
         }
         const newsData = await response.json();
         const allNews = newsData.posts;
-        // console.log("🚀 ~ loadAllNews ~ allNews:", allNews)
         const newsContainer = document.getElementById('news-container');
         
         allNews.forEach((news) => {
-        // console.log("🚀 ~ allNews.forEach ~ news:", news)
             const newsElement = document.createElement('div');
             newsElement.classList = `news-wrapper w-[772px] bg-purple-100 border-1 border-purple-600 rounded-xl p-5 flex justify-start gap-4 shadow-xl mb-4`;
             newsElement.innerHTML = `
