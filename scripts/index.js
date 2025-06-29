@@ -11,7 +11,7 @@ const loadAllNews = async (catId) => {
         newsContainer.innerHTML = '';
         const errorContainer = document.getElementById('no-news-error');
         errorContainer.innerHTML = '';
-        
+
         if(!allNews.length){
           const div = document.createElement('div');
           div.innerHTML = `
@@ -118,9 +118,48 @@ const addTitleToSidebar = (title) => {
     sideBarContainer.appendChild(titleElement);
 }
 
+//? Load all posts and display to the ui
+const loadAllPosts = async () => {
+  try {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    if(!res.ok){
+      throw new Error('Network response is not ok.');
+    }
+    const allPosts = await res.json();
+    const blogContainer = document.getElementById('blog-card-container');
+    allPosts.forEach(post=>{
+      const postCardDiv = document.createElement('div');
+      postCardDiv.classList = 'blog-wrapper w-[374px] border-2 border-[#12132d34] rounded-[24px] p-5';
+      postCardDiv.innerHTML = `
+        <img class='rounded-lg' src="${post.cover_image}" alt="${post.title}" />
+            <div class="blog-content my-5">
+              <i class="fa-regular fa-calendar"></i>
+              <span>${post.author.posted_date ? post.author.posted_date : 'Unknown'}</span>
+              <h4 class="text-lg font-extrabold my-3">
+                ${post.title}
+              </h4>
+              <p class="text-base text-[#12132d9f]">
+                ${post.description}
+              </p>
+            </div>
+            <div class="blog-footer flex justify-start gap-5 items-center">
+              <img class='w-10 h-10 rounded-full' src="${post.profile_image}" alt="" />
+              <div class="author-details">
+                <h4 class="text-base font-bold">${post.author.name}</h4>
+                <p class="text-[14px] text-[#12132d9f]">${post.author.designation ? post.author.designation : 'Unknown'}</p>
+              </div>
+            </div>
+      `;
+      blogContainer.appendChild(postCardDiv);
+    })
+  } catch (error) {
+    console.error('Error fetching news:', error);
+  }
+}
 
 
 //? Call the function to load news when the page loads
 window.onload = () => {
-    loadAllNews('comedy');
+  loadAllNews('comedy');
+  loadAllPosts();
 }
