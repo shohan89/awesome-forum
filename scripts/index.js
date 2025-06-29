@@ -1,17 +1,44 @@
 //? Load all news from the API and display them in the news container
-const loadAllNews = async () => {
+const loadAllNews = async (catId) => {
     try {
-        const response = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+        const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${catId}`);
         if (!response.ok) {
         throw new Error('Network response was not ok');
         }
         const newsData = await response.json();
         const allNews = newsData.posts;
         const newsContainer = document.getElementById('news-container');
+        newsContainer.innerHTML = '';
+        const errorContainer = document.getElementById('no-news-error');
+        errorContainer.innerHTML = '';
         
-        allNews.forEach((news) => {
+        if(!allNews.length){
+          const div = document.createElement('div');
+          div.innerHTML = `
+            <div role="alert" class="alert alert-error">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Ops! No News Found.</span>
+              </div>
+          `;
+          errorContainer.appendChild(div);
+        }
+        else{
+          allNews.forEach((news) => {
             const newsElement = document.createElement('div');
             newsElement.classList = `news-wrapper w-[772px] bg-purple-100 border-1 border-purple-600 rounded-xl p-5 flex justify-start gap-4 shadow-xl mb-4`;
+
             newsElement.innerHTML = `
                 <!-- News Thumb -->
                 <div class="news-thumb relative">
@@ -61,9 +88,22 @@ const loadAllNews = async () => {
             `;
             newsContainer.appendChild(newsElement);        
         });
+        }
     } catch (error) {
         console.error('Error fetching news:', error);
     }
+}
+
+// Handle Search
+const handleSearch = () => {
+  const searchField = document.getElementById('search');
+  const searchText = searchField.value;
+  if( searchText ){
+    loadAllNews(searchText);
+  }
+  else{
+    alert('Please enter a valid category name.');
+  }
 }
 
 //? add event handler to the button and after clicking the button the title will add on the sidebar
@@ -82,5 +122,5 @@ const addTitleToSidebar = (title) => {
 
 //? Call the function to load news when the page loads
 window.onload = () => {
-    loadAllNews();
+    loadAllNews('comedy');
 }

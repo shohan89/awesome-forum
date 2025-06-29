@@ -76,10 +76,11 @@
                 id="search"
                 name="search"
                 type="text"
-                placeholder="Search here anything"
-                class="input"
+                class="input text-purple-500"
               />
-              <button class="btn btn-accent">Search</button>
+              <button onclick="handleSearch()" class="btn btn-accent">
+                Search
+              </button>
             </div>
           </div>
           <div class="main-info bg-slate-200 rounded-xl">
@@ -93,6 +94,7 @@
         </div>
       </section>
       <!-- Banner End -->
+
       <!-- Forum Section Start -->
       <section class="my-5">
         <!-- Title  -->
@@ -108,6 +110,26 @@
           class="news-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10"
         >
           <div class="col-span-2">
+            <!-- No news error -->
+            <div id="no-news-error">
+              <!-- <div role="alert" class="alert alert-error">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Error! Task failed successfully.</span>
+              </div> -->
+            </div>
+            <!-- No news error -->
             <!-- News -->
             <div id="news-container">
               <!-- News will add here dynamically -->
