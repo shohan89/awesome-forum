@@ -78,7 +78,7 @@ const loadAllNews = async (catId) => {
                       <span class="text-[#12132D9F] mr-4">${news.posted_time}</span>
                     </div>
                     <button
-                      onclick="addTitleToSidebar('${news.title}')"
+                      onclick="addTitleToSidebar('${news.title}', ${news.view_count})"
                       class="btn cursor-pointer bg-[#10B981] text-white rounded-full w-[28px] h-[28px]"
                     >
                       <i class="fa-solid fa-envelope-open-text"></i>
@@ -108,12 +108,27 @@ const handleSearch = () => {
 
 //? add event handler to the button and after clicking the button the title will add on the sidebar
 const sideBarContainer = document.getElementById('side-bar-container');
-const addTitleToSidebar = (title) => {
+let markAsReadCount = 0;
+const addTitleToSidebar = (title, viewCount) => {
+    markAsReadCount++;
     const titleElement = document.createElement('div');
-    titleElement.classList = 'content-header flex justify-between mb-4';
+    titleElement.classList = 'side-bar-content bg-[#12132d17] p-5 rounded-xl shadow-lg';
     titleElement.innerHTML = `
-        <h5 class="text-xl font-bold">${title}</h5>
-                <p>Mark as read (4)</p>
+        <div class="content-header flex justify-between mb-4">
+                <h5 class="text-xl font-bold">Title</h5>
+                <p>Mark as read (${markAsReadCount})</p>
+              </div>
+              <!-- News Content -->
+              <div
+                class="flex justify-between items-center bg-white p-4 rounded-lg mb-4"
+              >
+                <h5 class="text-base font-semibold">
+                  ${title}
+                </h5>
+                <i class="fa-regular fa-eye pr-2"></i>
+                <span>${viewCount}</span>
+              </div>
+            </div>
     `;
     sideBarContainer.appendChild(titleElement);
 }
