@@ -25,32 +25,41 @@
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal p-0 gap-2 text-lg">
-            <li
-              class="bordered border-2 border-base-content rounded-full"
-              title="Home"
-            >
-              <a href="#" title="Home"><i class="fa-solid fa-house"></i></a>
+            <li class="bordered border-2 border-base-content rounded-full">
+              <a class="tooltip tooltip-bottom" data-tip="Home" href="#"
+                ><i class="fa-solid fa-house"></i
+              ></a>
             </li>
             <li
               class="bordered border-2 border-base-content rounded-full"
               title="Settings"
             >
-              <a href="#"><i class="fa-solid fa-pencil"></i></a>
+              <a class="tooltip tooltip-bottom" data-tip="Edit" href="#"
+                ><i class="fa-solid fa-pencil"></i
+              ></a>
             </li>
             <li
               class="bordered border-2 border-base-content rounded-full"
               title="Add User"
             >
-              <a href="#"><i class="fa-solid fa-user-plus"></i></a>
+              <a class="tooltip tooltip-bottom" data-tip="Add" href="#"
+                ><i class="fa-solid fa-user-plus"></i
+              ></a>
             </li>
             <li
               class="bordered border-2 border-base-content rounded-full"
               title="Flag"
             >
-              <a href="#"><i class="fa-solid fa-flag"></i></a>
+              <a class="tooltip tooltip-bottom" data-tip="Marked" href="#"
+                ><i class="fa-solid fa-flag"></i
+              ></a>
             </li>
             <li>
-              <button class="btn btn-accent rounded-full">Sign In</button>
+              <button
+                class="btn bg-purple-400 text-white hover:bg-gray-200 hover:text-purple-400 rounded-full"
+              >
+                Sign In
+              </button>
             </li>
           </ul>
         </div>
@@ -65,7 +74,11 @@
         >
           <div class="content text-white">
             <h2 class="text-6xl font-black mb-5">
-              Welcome to the <br /><span>ReTro</span> Forum
+              Welcome to the <br /><span
+                class="bg-gradient-to-r from-red to-black-100"
+                >Awesome</span
+              >
+              Forum
             </h2>
             <p class="text-xl font-medium mb-5">
               Share your favorite opinion and win and wp <br />
