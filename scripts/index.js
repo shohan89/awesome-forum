@@ -112,23 +112,13 @@ let markAsReadCount = 0;
 const addTitleToSidebar = (title, viewCount) => {
     markAsReadCount++;
     const titleElement = document.createElement('div');
-    titleElement.classList = 'side-bar-content bg-[#12132d17] p-5 rounded-xl shadow-lg';
+    titleElement.classList = 'flex justify-between items-center bg-white p-4 rounded-lg mb-4';
     titleElement.innerHTML = `
-        <div class="content-header flex justify-between mb-4">
-                <h5 class="text-xl font-bold">Title</h5>
-                <p>Mark as read (${markAsReadCount})</p>
-              </div>
-              <!-- News Content -->
-              <div
-                class="flex justify-between items-center bg-white p-4 rounded-lg mb-4"
-              >
-                <h5 class="text-base font-semibold">
+        <h5 class="text-base font-semibold">
                   ${title}
                 </h5>
                 <i class="fa-regular fa-eye pr-2"></i>
                 <span>${viewCount}</span>
-              </div>
-            </div>
     `;
     sideBarContainer.appendChild(titleElement);
 }
